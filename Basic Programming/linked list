@@ -1,0 +1,31 @@
+#include <iostream>
+
+struct Node {
+  int data;
+  Node *next;
+};
+
+int main() {
+  // Create the first node
+  Node *head = new Node{1};
+
+  // Create the second node
+  Node *second = new Node{2};
+
+  // Create the third node
+  Node *third = new Node{3};
+
+  // Link the nodes together
+  head->next = second;
+  second->next = third;
+
+  // Print the linked list
+  while (head != nullptr) {
+    std::cout << head->data << " ";
+    head = head->next;
+  }
+
+  std::cout << std::endl;
+
+  return 0;
+}
