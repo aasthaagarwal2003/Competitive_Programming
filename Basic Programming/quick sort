@@ -1,0 +1,45 @@
+#include <iostream>
+
+using namespace std;
+
+void quicksort(int *arr, int low, int high) {
+  if (low < high) {
+    int pivot = arr[low];
+    int i = low + 1;
+    int j = high;
+
+    while (i <= j) {
+      while (arr[i] < pivot) {
+        i++;
+      }
+
+      while (arr[j] > pivot) {
+        j--;
+      }
+
+      if (i <= j) {
+        swap(arr[i], arr[j]);
+        i++;
+        j--;
+      }
+    }
+
+    quicksort(arr, low, j);
+    quicksort(arr, i, high);
+  }
+}
+
+int main() {
+  int arr[] = {10, 8, 3, 1, 5, 2, 7, 6, 9, 4};
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  quicksort(arr, 0, n - 1);
+
+  for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+  }
+
+  cout << endl;
+
+  return 0;
+}
